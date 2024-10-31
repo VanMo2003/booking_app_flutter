@@ -1,3 +1,8 @@
+import 'dart:developer';
+
+import 'package:demo_booking_app/controller/user_controller.dart';
+import 'package:demo_booking_app/data/models/request/user_request.dart';
+import 'package:demo_booking_app/screens/auth_screen/enter_info_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,6 +12,7 @@ import '../../controller/loading_controller.dart';
 import '../../helpers/route_helper.dart';
 import '../../helpers/valid_helper.dart';
 import '../../utils/assets_utils.dart';
+import '../../views/custom_snackbar.dart';
 import '../widgets/button_text_widget.dart';
 import '../widgets/loading_widget.dart';
 import '../widgets/text_field_widget.dart';
@@ -92,7 +98,9 @@ class SignUpScreen extends StatelessWidget {
                         height: DimensionUtils.SIZE_BOX_HEIGHT_LARGE),
                     ButtonTextWidget(
                       label: KeyLanguage.signUp.tr,
-                      onTap: () {},
+                      onTap: () {
+                        checkExistUser();
+                      },
                     ),
                     const SizedBox(
                         height:
@@ -128,6 +136,43 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void checkExistUser() {
+    String username = usernameController.text;
+    String password = passwordController.text;
+    String cfPassword = comfirmPasswordController.text;
+
+    if (form.currentState!.validate()) {
+      log('đầy đủ thông tin');
+      Get.find<LoadingController>().loading(
+        handle: () {
+          if (password != cfPassword) {
+            showCustomSnackBar(
+              KeyLanguage.errorPasswordsDuplicate.tr,
+              isError: true,
+            );
+          } else {
+            Get.find<UserController>().checkExistUser(username).then(
+              (value) {
+                if (value) {
+                  showCustomSnackBar(
+                    KeyLanguage.existedUsername.tr,
+                    isError: true,
+                  );
+                } else {
+                  Get.offAll(
+                    () => EnterInfoScreen(
+                      user: User(username: username, password: password),
+                    ),
+                  );
+                }
+              },
+            );
+          }
+        },
+      );
+    }
   }
 
   void toSignIn() {

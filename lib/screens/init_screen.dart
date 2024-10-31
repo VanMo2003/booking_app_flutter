@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller/authentication_controller.dart';
-import 'auth_screen/sign_in.dart';
+import 'auth_screen/sign_in_screen.dart';
 import 'manage_screen.dart';
 import 'unknown_screen.dart';
 
@@ -18,11 +18,12 @@ class InitScreen extends StatelessWidget {
         log("authentication controller");
         switch (controller.status) {
           case AuthenticationStatus.authentication:
-            return const ManageScreen();
+            log("authentication");
+            return ManageScreen();
           case AuthenticationStatus.un_authentication:
             return SignInScreen();
           default:
-            return const UnknownScreen();
+            return UnknownScreen();
         }
       },
     );

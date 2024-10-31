@@ -50,7 +50,7 @@ const Map<String, String> vi = {
   KeyLanguage.cancel: 'Hủy',
   KeyLanguage.agree: 'Đồng ý',
   KeyLanguage.no: 'Không',
-  KeyLanguage.infoPerson: 'Thông tin cá nhân',
+  KeyLanguage.infoPerson: 'Nhập thông tin',
   KeyLanguage.notification: 'Thông báo',
   KeyLanguage.changePassword: 'Thay đổi mật khẩu',
   KeyLanguage.postContent: '  Nội dung bài viêt',

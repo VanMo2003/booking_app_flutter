@@ -1,3 +1,5 @@
+import 'package:demo_booking_app/controller/user_controller.dart';
+import 'package:demo_booking_app/data/repositories/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 
@@ -20,9 +22,12 @@ Future<void> binding() async {
 
   Get.lazyPut(() => AuthenticationRepository(
       apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(() =>
+      UserRepository(apiClient: Get.find(), sharedPreferences: Get.find()));
 
   Get.lazyPut(() => LoadingController());
   Get.lazyPut(() => LanguageController(sharedPreferences: Get.find()));
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
   Get.lazyPut(() => AuthenticationController(authRepo: Get.find()));
+  Get.lazyPut(() => UserController(userRepo: Get.find()));
 }
