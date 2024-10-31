@@ -24,53 +24,36 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TweenAnimationBuilder<double>(
-            duration: const Duration(
-                milliseconds: DimensionUtils.TIME_LOADING_DEFAULT),
-            tween: Tween<double>(begin: -1, end: 1),
-            builder: (context, value, child) {
-              return Transform.translate(
-                offset: Offset(
-                    (size.width - DimensionUtils.ICON_SIZE_LOGO) / 2 * value,
-                    0),
-                child: Transform.scale(
-                  scale: value < 0 ? 0 : value,
-                  child: SizedBox(
-                    height: DimensionUtils.ICON_SIZE_LOGO,
-                    child: Image.asset(AssetsUtils.logoHotel),
-                  ),
-                ),
-              );
-            },
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            opacity: 0.8,
+            fit: BoxFit.cover,
+            image: AssetImage(
+              AssetsUtils.background,
+            ),
           ),
-          TweenAnimationBuilder<double>(
-            duration: const Duration(
-                milliseconds: DimensionUtils.TIME_LOADING_DEFAULT),
-            tween: Tween<double>(begin: 0, end: 1),
-            builder: (context, value, child) {
-              return Transform.translate(
-                offset: Offset(
-                  (size.width - DimensionUtils.ICON_SIZE_LOGO) / 2,
-                  0,
+        ),
+        alignment: Alignment.center,
+        child: TweenAnimationBuilder<double>(
+          duration:
+              const Duration(milliseconds: DimensionUtils.TIME_LOADING_DEFAULT),
+          tween: Tween<double>(begin: -1, end: 1),
+          builder: (context, value, child) {
+            return Transform.translate(
+              offset: Offset(0, 0),
+              child: Transform.scale(
+                scale: value < 0 ? 0 : value,
+                child: Image.asset(
+                  width: DimensionUtils.ICON_SIZE_SPLASH,
+                  AssetsUtils.logoBooking,
                 ),
-                child: Transform.scale(
-                  scale: value,
-                  child: Text(
-                    "Booking",
-                    style: StyleUtils.titleLarge
-                        .copyWith(color: ColorConstant.getPrimaryColor()),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
