@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:demo_booking_app/controller/authentication_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -58,7 +61,15 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  route() {
+  Future route() async {
+    String? tokenLogin =
+        await Get.find<AuthenticationController>().authRepo.getUserToken();
+    if (tokenLogin != null) {
+      log("token : $tokenLogin");
+      Get.find<AuthenticationController>()
+          .setStatus(AuthenticationStatus.authentication);
+    }
+
     Future.delayed(
       const Duration(milliseconds: DimensionUtils.TIME_SPLASH),
       () {

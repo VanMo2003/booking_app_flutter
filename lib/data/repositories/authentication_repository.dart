@@ -26,10 +26,18 @@ class AuthenticationRepository {
   }
 
   Future<bool> saveUserToken(String? token) async {
-    apiClient.token = "Bearer $token";
-    apiClient.updateAuthHeader("Bearer $token");
-    return await sharedPreferences.setString(
-        AppConstant.TOKEN, "Bearer $token");
+    apiClient.token = "$token";
+    apiClient.updateAuthHeader("$token");
+    return await sharedPreferences.setString(AppConstant.TOKEN, "$token");
+  }
+
+  Future<String?> getUserToken() async {
+    String? token = sharedPreferences.getString(AppConstant.TOKEN);
+    if (token != null) {
+      apiClient.token = "$token";
+      apiClient.updateAuthHeader("$token");
+    }
+    return token;
   }
 
   Future<bool> removeToken() async {
