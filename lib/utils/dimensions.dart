@@ -8,6 +8,7 @@ class DimensionUtils {
   static const int PHONE_NUMBER = 10;
   static const int AGE_LIMIT = 16;
 
+  static const double ICON_SIZE_SPLASH = 200;
   static const double ICON_SIZE_LOGO = 150;
   static const double ICON_SIZE_SMALL = 18;
   static const double ICON_SIZE_DEFAULT = 28;
