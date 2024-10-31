@@ -52,7 +52,7 @@ const Map<String, String> en = {
   KeyLanguage.cancel: 'Cancel',
   KeyLanguage.agree: 'Agree',
   KeyLanguage.no: 'No',
-  KeyLanguage.infoPerson: 'Personal Infomation',
+  KeyLanguage.infoPerson: 'Enter Infomation',
   KeyLanguage.notification: 'Notification',
   KeyLanguage.changePassword: 'Change Password',
   KeyLanguage.postContent: '  Post Content',

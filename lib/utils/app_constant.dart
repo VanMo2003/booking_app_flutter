@@ -6,8 +6,8 @@ class AppConstant {
   static const ENDPOINT_INTROSPECT = "/auth/introspect";
   static const ENDPOINT_REFRESH_TOKEN = "/auth/refreshToken";
   static const ENDPOINT_CREATE_USER = "/users";
-  // static const ENDPOINT_GET_MY_INFO = "/users/myInfo";
-  // static const ENDPOINT_CHECK_EXIST_USER = "/users/checkExistUser";
+  static const ENDPOINT_GET_MY_INFO = "/users/myInfo";
+  static const ENDPOINT_CHECK_EXIST_USER = "/users/checkExistUser";
 
   static const APP_NAME = "Booking App";
 

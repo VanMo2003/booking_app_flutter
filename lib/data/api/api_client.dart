@@ -126,33 +126,6 @@ class ApiClient extends GetxService {
     }
   }
 
-  // Future<Response> postMultipartData(String uri, Multipart multipartBody,
-  //     {required Map<String, String>? headers, String? filename}) async {
-  //   try {
-  //     if (Foundation.kDebugMode) {
-  //       log('====> API Call: $uri\nHeader: $_noAuthHeaders');
-  //       log('====> API Body: {${multipartBody.key} : ${multipartBody.file}}');
-  //     }
-  //     Http.MultipartRequest _request =
-  //         Http.MultipartRequest('POST', Uri.parse(urlBase + uri));
-  //     _request.headers.addAll(headers ?? _noAuthHeaders);
-  //     if (multipartBody.file != null) {
-  //       Uint8List _list = await multipartBody.file!.readAsBytes();
-  //       _request.files.add(Http.MultipartFile(
-  //         multipartBody.key,
-  //         multipartBody.file!.readAsBytes().asStream(),
-  //         _list.length,
-  //         filename: filename,
-  //       ));
-  //     }
-  //     Http.Response _response =
-  //         await Http.Response.fromStream(await _request.send());
-  //     return handleResponse(_response, uri);
-  //   } catch (e) {
-  //     return Response(statusCode: 1, statusText: noInternetMessage);
-  //   }
-  // }
-
   Future<Response> putData(String uri, dynamic body,
       {Map<String, String>? header}) async {
     try {
@@ -224,13 +197,6 @@ class ApiClient extends GetxService {
         statusText: apiResponse.message,
       );
     }
-    // else {
-    //   _response = Response(
-    //     statusCode: _response.statusCode,
-    //     body: _response.body,
-    //     statusText: _response.body['message'],
-    //   );
-    // }
     if (Foundation.kDebugMode) {
       debugPrint('====> Api Response : [${_response.statusCode}] $uri');
     }

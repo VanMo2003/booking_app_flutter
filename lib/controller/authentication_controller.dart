@@ -23,7 +23,7 @@ class AuthenticationController extends GetxController implements GetxService {
     ApiResponse res = ApiResponse.fromJson(response.body);
 
     if (response.statusCode == 200) {
-      _status = AuthenticationStatus.authentication;
+      setStatus(AuthenticationStatus.authentication);
 
       AuthenticationResponse? authentication =
           AuthenticationResponse.fromJson(res.data);
@@ -34,8 +34,6 @@ class AuthenticationController extends GetxController implements GetxService {
     } else {
       ApiChecker.apiChecker(response.statusCode!);
     }
-
-    update();
 
     log(response.statusCode!.toString());
 
