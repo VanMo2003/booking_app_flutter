@@ -36,7 +36,7 @@ class ApiClient extends GetxService {
     String token,
   ) {
     Map<String, String> _header = {
-      "Authorization": token,
+      "Authorization": "Bearer $token",
       'content-type': 'application/json',
     };
 

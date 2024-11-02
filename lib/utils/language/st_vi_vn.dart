@@ -7,8 +7,9 @@ const Map<String, String> vi = {
   KeyLanguage.questionSignUp: "Bạn chưa có tài khoản?",
   KeyLanguage.questionSignIn: "Bạn đã có tài khoản?",
   KeyLanguage.email: "Email của bạn",
-  KeyLanguage.nameManage: "Tên chủ sân",
-  KeyLanguage.nameFootballFile: "Tên sân bóng",
+  KeyLanguage.nameHotelier: "Tên chủ khách sạn",
+  KeyLanguage.nameHotel: "Tên Khách sạn",
+  KeyLanguage.popularPlace: "Địa điểm nổi bật",
   KeyLanguage.username: "Tên đăng nhập",
   KeyLanguage.existedUsername: "Tên đăng nhập đã tồn tại",
   KeyLanguage.password: 'Mật khẩu',
@@ -90,4 +91,6 @@ const Map<String, String> vi = {
   KeyLanguage.attendanced: "Hôm nay bạn đã điểm danh",
   KeyLanguage.noInternet: "Không có kết nối internet",
   KeyLanguage.hasInternet: "Đã có kêt nối internet",
+  KeyLanguage.order: "Đơn hàng",
+  KeyLanguage.setting: "Cài Đặt",
 };

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../data/api/api_checker.dart';
-import '../data/models/request/user_request.dart';
+import '../data/models/body/user.dart';
 import '../data/models/response/api_response.dart';
 import '../data/models/response/user_response.dart';
 import '../data/repositories/user_repository.dart';

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:demo_booking_app/controller/user_controller.dart';
-import 'package:demo_booking_app/data/models/request/user_request.dart';
+import 'package:demo_booking_app/data/models/body/user.dart';
 import 'package:demo_booking_app/screens/auth_screen/enter_info_screen.dart';
 import 'package:flutter/material.dart';
 

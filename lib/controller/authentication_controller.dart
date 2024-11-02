@@ -23,14 +23,13 @@ class AuthenticationController extends GetxController implements GetxService {
     ApiResponse res = ApiResponse.fromJson(response.body);
 
     if (response.statusCode == 200) {
-      setStatus(AuthenticationStatus.authentication);
-
       AuthenticationResponse? authentication =
           AuthenticationResponse.fromJson(res.data);
 
       if (authentication.token != null) {
         authRepo.saveUserToken(authentication.token);
       }
+      setStatus(AuthenticationStatus.authentication);
     } else {
       ApiChecker.apiChecker(response.statusCode!);
     }
