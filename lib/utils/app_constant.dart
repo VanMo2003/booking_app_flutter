@@ -1,13 +1,17 @@
 class AppConstant {
   static const URL_BASE = "http://10.0.2.2:8080/booking-app";
   static const URL_BASE_WEB = "http://localhost:8080/booking-app";
+
   static const ENDPOINT_LOGIN = "/auth/login";
   static const ENDPOINT_LOGOUT = "/auth/logout";
   static const ENDPOINT_INTROSPECT = "/auth/introspect";
   static const ENDPOINT_REFRESH_TOKEN = "/auth/refreshToken";
+
   static const ENDPOINT_CREATE_USER = "/users";
   static const ENDPOINT_GET_MY_INFO = "/users/myInfo";
   static const ENDPOINT_CHECK_EXIST_USER = "/users/checkExistUser";
+
+  static const ENDPOINT_GET_ALL_HOTEL = "/hotels";
 
   static const APP_NAME = "Booking App";
 

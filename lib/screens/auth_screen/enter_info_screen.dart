@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/loading_controller.dart';
 import '../../controller/user_controller.dart';
-import '../../data/models/request/user_request.dart';
+import '../../data/models/body/user.dart';
 import '../../helpers/valid_helper.dart';
 import '../../utils/app_constant.dart';
 import '../../utils/date_convert.dart';

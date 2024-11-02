@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/user_controller.dart';
+import 'home/admin/admin_screen.dart';
+import 'home/hotelier/hotelier_screen.dart';
+import 'home/user/user_sceen.dart';
 
 class ManageScreen extends StatefulWidget {
   const ManageScreen({super.key});
@@ -18,10 +21,23 @@ class _ManageScreenState extends State<ManageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Home"),
-      ),
+    return GetBuilder<UserController>(
+      builder: (controller) {
+        switch (controller.roles) {
+          case Roles.admin:
+            return AdminScreen();
+          case Roles.hotelier:
+            return HotelierScreen();
+          case Roles.user:
+            return UserScreen();
+          default:
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+        }
+      },
     );
   }
 }

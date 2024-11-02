@@ -10,8 +10,9 @@ class KeyLanguage {
   static const String email = "email";
   static const String revenue = "revenue";
   static const String message = "message";
-  static const String nameManage = "name_manage";
-  static const String nameFootballFile = "name_football_field";
+  static const String nameHotelier = "name_hotelier";
+  static const String nameHotel = "name_hotel";
+  static const String popularPlace = "popular_place";
   static const String displayName = "display_name";
   static const String password = "password";
   static const String phone = "phone";
@@ -86,4 +87,6 @@ class KeyLanguage {
   static const String attendanced = "attendanced";
   static const String noInternet = "no_internet";
   static const String hasInternet = "has_internet";
+  static const String order = "order";
+  static const String setting = "setting";
 }

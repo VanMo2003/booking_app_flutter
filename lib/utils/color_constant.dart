@@ -24,7 +24,7 @@ class ColorConstant {
   static Color getBackgroundPrimary() {
     return Get.find<ThemeController>().darkTheme
         ? Color(0xff323232)
-        : Colors.white;
+        : Color.fromARGB(255, 237, 237, 237);
   }
 
   static Color getBackgroundAppBar() {

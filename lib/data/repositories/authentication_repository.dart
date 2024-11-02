@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import '../../utils/app_constant.dart';
 import '../api/api_client.dart';
-import '../models/request/authentication_request.dart';
+import '../models/body/authentication.dart';
 
 class AuthenticationRepository {
   final ApiClient apiClient;
