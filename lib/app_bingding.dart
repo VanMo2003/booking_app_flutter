@@ -1,4 +1,6 @@
+import 'package:booking_app_demo/controller/statistical_controller.dart';
 import 'package:booking_app_demo/data/repositories/payment_repository.dart';
+import 'package:booking_app_demo/data/repositories/statistical_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 
@@ -42,6 +44,7 @@ Future<void> binding() async {
   Get.lazyPut(() => RoomRepository(apiClient: Get.find()));
   Get.lazyPut(() => ServiceRepository(apiClient: Get.find()));
   Get.lazyPut(() => PaymentRepository(apiClient: Get.find()));
+  Get.lazyPut(() => StatisticalRepository(apiClient: Get.find()));
 
   Get.lazyPut(() => LoadingController());
   Get.lazyPut(() => LanguageController(sharedPreferences: Get.find()));
@@ -53,5 +56,6 @@ Future<void> binding() async {
   Get.lazyPut(() => ServiceController(serviceRepo: Get.find()));
   Get.lazyPut(() => BookingController(bookingRepo: Get.find()));
   Get.lazyPut(() => PaymentController(paymentRepo: Get.find()));
+  Get.lazyPut(() => StatisticalController(statisticalRepo: Get.find()));
   Get.lazyPut(() => CalendarController());
 }

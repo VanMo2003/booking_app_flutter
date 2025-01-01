@@ -115,14 +115,14 @@ class _ServiceSceenState extends State<ServiceSceen> {
                     children: [
                       TextFieldWidget(
                         controller: nameController,
-                        labelText: "Tên phòng",
+                        labelText: "Tên dịch vụ",
                       ),
                       const SizedBox(
                         height: DimensionUtils.SIZE_BOX_HEIGHT_SMALL,
                       ),
                       TextFieldWidget(
                         controller: descriptionController,
-                        labelText: "Mô tả phòng",
+                        labelText: "Mô tả dịch vụ",
                       ),
                       const SizedBox(
                         height: DimensionUtils.SIZE_BOX_HEIGHT_SMALL,

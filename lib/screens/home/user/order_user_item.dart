@@ -25,9 +25,10 @@ class OrderItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(OrderDetailScreen(
-            hotel: hotel,
-            rooms: booking.bookedRoom!.rooms!,
-            services: booking.bookedRoom!.services ?? []));
+          hotel: hotel,
+          booking: booking,
+          isHotelier: isHotelier,
+        ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(

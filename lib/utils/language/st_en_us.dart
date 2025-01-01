@@ -16,6 +16,7 @@ const Map<String, String> en = {
   KeyLanguage.existedUsername: "Username existed",
   KeyLanguage.revenue: "Revenue",
   KeyLanguage.message: "Message",
+  KeyLanguage.search: "Search",
   KeyLanguage.orderNow: "Order Now",
   KeyLanguage.password: 'Password',
   KeyLanguage.comfirmPassword: 'Comfirm Password',

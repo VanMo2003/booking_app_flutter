@@ -1,8 +1,6 @@
-import 'package:booking_app_demo/data/models/response/room_response.dart';
-import 'package:booking_app_demo/data/models/response/service_response.dart';
+import 'package:booking_app_demo/data/models/response/booking_response.dart';
 
 import '../../../data/models/response/hotel_response.dart';
-import '../../auth_screen/widgets/birth_place_dropdown.dart';
 import '../../widgets/loading_widget.dart';
 import '../../../utils/dimensions.dart';
 import '../../../utils/language/key_language.dart';
@@ -21,13 +19,13 @@ class OrderDetailScreen extends StatefulWidget {
   const OrderDetailScreen({
     super.key,
     required this.hotel,
-    required this.rooms,
-    required this.services,
+    required this.booking,
+    this.isHotelier = false,
   });
 
   final HotelResponse hotel;
-  final List<RoomResponse> rooms;
-  final List<ServiceResponse> services;
+  final BookingResponse booking;
+  final bool isHotelier;
 
   @override
   State<OrderDetailScreen> createState() => _OrderDetailScreenState();
@@ -38,9 +36,14 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   double sum = 0.0;
   bool isPaymentNew = false;
 
-  final TextEditingController _controller = TextEditingController();
-
   final form = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    if (widget.booking.price != null) {
+      totalsMoney.value = widget.booking.price ?? 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +81,14 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     ),
                     const SizedBox(
                         height: DimensionUtils.SIZE_BOX_HEIGHT_DEFAULT),
+                    if (widget.isHotelier) ...[
+                      richText(
+                        label: KeyLanguage.phone.tr,
+                        content: widget.booking.user!.phone,
+                      ),
+                      const SizedBox(
+                          height: DimensionUtils.SIZE_BOX_HEIGHT_DEFAULT),
+                    ],
                     GetBuilder<CalendarController>(
                       builder: (calendarController) {
                         return Row(
@@ -110,7 +121,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         height: DimensionUtils.SIZE_BOX_HEIGHT_DEFAULT),
                     const SizedBox(
                         height: DimensionUtils.SIZE_BOX_HEIGHT_DEFAULT),
-                    if (widget.rooms.isNotEmpty) ...[
+                    if (widget.booking.bookedRoom!.rooms!.isNotEmpty) ...[
                       Text(
                         "Phòng đã chọn : ",
                         style: GoogleFonts.roboto(
@@ -121,9 +132,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          for (int i = 0; i < widget.rooms.length; i++) ...[
+                          for (int i = 0;
+                              i < widget.booking.bookedRoom!.rooms!.length;
+                              i++) ...[
                             Text(
-                              " - ${widget.rooms[i].name!} (${FormartUtils.formatDoubleToVND(widget.rooms[i].price!)})",
+                              " - ${widget.booking.bookedRoom!.rooms![i].name!} (${FormartUtils.formatDoubleToVND(widget.booking.bookedRoom!.rooms![i].price!)})",
                               style: GoogleFonts.roboto(
                                 fontStyle: FontStyle.italic,
                                 fontSize: DimensionUtils.FONT_SIZE_DEFAULT,
@@ -135,7 +148,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     ],
                     const SizedBox(
                         height: DimensionUtils.SIZE_BOX_HEIGHT_DEFAULT),
-                    if (widget.services.isNotEmpty) ...[
+                    if (widget.booking.bookedRoom!.services!.isNotEmpty) ...[
                       Text(
                         "Dịch vụ : ",
                         style: GoogleFonts.roboto(
@@ -146,9 +159,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          for (int i = 0; i < widget.services.length; i++) ...[
+                          for (int i = 0;
+                              i < widget.booking.bookedRoom!.services!.length;
+                              i++) ...[
                             Text(
-                              " ${widget.services[i].name!} (${FormartUtils.formatDoubleToVND(widget.services[i].price!)})",
+                              " ${widget.booking.bookedRoom!.services![i].name!} (${FormartUtils.formatDoubleToVND(widget.booking.bookedRoom!.services![i].price!)})",
                               style: GoogleFonts.roboto(
                                 fontStyle: FontStyle.italic,
                                 fontSize: DimensionUtils.FONT_SIZE_DEFAULT,

@@ -6,15 +6,16 @@ import 'package:get/get.dart';
 import '../../../utils/dimensions.dart';
 
 class BirthPlaceDropdown extends StatefulWidget {
-  BirthPlaceDropdown({
-    super.key,
-    required this.label,
-    required this.items,
-    required this.onValueChanged,
-  });
+  BirthPlaceDropdown(
+      {super.key,
+      required this.label,
+      required this.items,
+      required this.onValueChanged,
+      this.selectedBirthPlace});
   final String label;
   final List<String> items;
   final Function(String) onValueChanged;
+  String? selectedBirthPlace;
 
   @override
   State<BirthPlaceDropdown> createState() => _BirthPlaceDropdownState();
@@ -26,12 +27,15 @@ class _BirthPlaceDropdownState extends State<BirthPlaceDropdown> {
   @override
   void initState() {
     super.initState();
-    selected = widget.items[0];
+    if (widget.selectedBirthPlace == null) {
+      selected = widget.items[0];
+    } else {
+      selected = widget.selectedBirthPlace!;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var padding = MediaQuery.of(context).padding;
     return Container(
       height: 60,
       margin: const EdgeInsets.only(top: DimensionUtils.PADDING_SIZE_SMALL),

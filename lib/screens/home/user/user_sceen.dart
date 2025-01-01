@@ -1,3 +1,5 @@
+import 'package:booking_app_demo/controller/user_controller.dart';
+
 import '../../../controller/hotel_controller.dart';
 import '../../../controller/booking_controller.dart';
 import 'hotel_detail.dart';
@@ -43,6 +45,7 @@ class _UserScreenState extends State<UserScreen> {
     super.dispose();
     Get.find<BookingController>().clearData();
     Get.find<HotelController>().clearData();
+    Get.find<UserController>().clearData();
   }
 
   @override

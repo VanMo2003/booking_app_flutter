@@ -45,7 +45,9 @@ class _PickCalendarDialogState extends State<PickCalendarDialog> {
                 },
                 onValueChanged: (dates) => setState(() {
                   calendarController.changeDateTime(dates);
-                  Navigator.of(context).pop();
+                  Duration difference = dates[0]!.difference(dates[1]!);
+
+                  Get.back(result: difference.inDays.abs());
                 }),
               );
             },

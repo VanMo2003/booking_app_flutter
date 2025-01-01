@@ -9,6 +9,7 @@ class AppConstant {
 
   static const ENDPOINT_CREATE_USER = "/user";
   static const ENDPOINT_GET_MY_INFO = "/user/myInfo";
+  static const ENDPOINT_UPDATE_MY_INFO = "/user/updateMyInfo";
   static const ENDPOINT_CHECK_EXIST_USER = "/user/checkExistUser";
 
   static const ENDPOINT_GET_ALL_HOTEL = "/hotel";
@@ -30,6 +31,8 @@ class AppConstant {
 
   static const ENDPOINT_CREATE_PAYMENT = "/payment/vn-pay";
   static const ENDPOINT_CALLBACK_PAYMENT = "/payment/vn-pay-callback";
+
+  static const ENDPOINT_GET_STATISTICAL_BY_HOTEL = "/statistical";
 
   static const APP_NAME = "Booking App";
 

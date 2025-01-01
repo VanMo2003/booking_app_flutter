@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:booking_app_demo/screens/home/user/person_user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -91,7 +90,7 @@ class _DrawerPersonWidgetState extends State<DrawerPersonWidget> {
                       icon: Icons.person,
                       label: KeyLanguage.person.tr,
                       onTap: () {
-                        Navigator.pop(context);
+                        Get.to(PersonUserScreen());
                       },
                     ),
                     buttonItem(

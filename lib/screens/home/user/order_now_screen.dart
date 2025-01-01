@@ -48,6 +48,7 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
   final TextEditingController _controller = TextEditingController();
 
   final form = GlobalKey<FormState>();
+  int difference = 1;
 
   @override
   void initState() {
@@ -65,6 +66,8 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
         }
       }
     }
+
+    totalsMoney.value = sum;
   }
 
   @override
@@ -73,7 +76,7 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstant.getWhiteColor(),
-          title: Text("Thông tin đơn hàng"),
+          title: const Text("Thông tin đơn hàng"),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -225,7 +228,8 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
                     Obx(
                       () => richText(
                         label: "Tổng tiền",
-                        content: "${totalsMoney.value}",
+                        content:
+                            "$sum * $difference(ngày) = ${totalsMoney.value}",
                       ),
                     ),
                   ],
@@ -242,13 +246,13 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
                       borderRadius: BorderRadius.circular(
                           DimensionUtils.BORDER_RADIUS_EXTRA_LARGE_OVER),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(
+                        padding: EdgeInsets.all(
                             DimensionUtils.PADDING_SIZE_EXTRA_EXTRA_LARGE),
                         child: Text(
-                          KeyLanguage.orderNow.tr,
-                          style: const TextStyle(
+                          "Hoàn tất thanh toán",
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: DimensionUtils.FONT_SIZE_DEFAULT,
@@ -266,13 +270,15 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
     );
   }
 
-  void pickCalendar() {
-    showDialog(
+  void pickCalendar() async {
+    difference = await showDialog(
       context: context,
       builder: (context) {
         return const PickCalendarDialog();
       },
     );
+
+    totalsMoney.value = sum * difference;
   }
 
   Widget richText({required String? label, required String? content}) {
@@ -310,6 +316,7 @@ class _OrderNowScreenState extends State<OrderNowScreen> {
           departureDate: endDate,
           paymentMethod: isPaymentNew ? "PAY_NOW" : "DIRECT_PAYMENT",
           rooms: widget.selectedRooms,
+          price: totalsMoney.value,
           services: widget.selectedServices,
           note: _controller.text,
           hotelId: widget.hotel.id,

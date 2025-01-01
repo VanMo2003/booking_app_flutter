@@ -8,8 +8,16 @@ class DateConvert {
     return dateFormat.format(dateTime);
   }
 
+  static String dateTimeToStringRequest(DateTime dateTime) {
+    return dateFormatRequest.format(dateTime);
+  }
+
   static DateTime stringToDateTime(String dateTime) {
     return dateFormat.parse(dateTime);
+  }
+
+  static DateTime stringToDateTimeRequest(String dateTime) {
+    return dateFormatRequest.parse(dateTime);
   }
 
   static String stringFormatToRequest(String dateTimeString) {

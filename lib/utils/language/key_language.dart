@@ -24,6 +24,7 @@ class KeyLanguage {
   static const String dateOfBirth = "date_of_birth";
   static const String gender = "gender";
   static const String status = "status";
+  static const String search = "search";
   static const String active = "active";
   static const String yard = "yard";
   static const String completed = "completed";

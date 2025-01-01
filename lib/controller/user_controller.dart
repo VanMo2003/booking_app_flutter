@@ -1,3 +1,4 @@
+import 'package:booking_app_demo/data/models/body/user_update.dart';
 import 'package:get/get.dart';
 
 import '../data/api/api_checker.dart';
@@ -38,6 +39,22 @@ class UserController extends GetxController implements GetxService {
 
   Future<int> getMyInfo() async {
     Response response = await userRepo.getMyInfo();
+
+    if (response.statusCode == 200) {
+      _user = UserResponse.fromJson(response.body["data"]);
+
+      checkRole();
+    } else {
+      ApiChecker.apiChecker(response.statusCode!);
+    }
+
+    update();
+
+    return 0;
+  }
+
+  Future<int> updateMyInfo(UserUpdate userNew) async {
+    Response response = await userRepo.updateMyInfo(userNew);
 
     if (response.statusCode == 200) {
       _user = UserResponse.fromJson(response.body["data"]);

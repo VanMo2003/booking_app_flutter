@@ -17,6 +17,7 @@ const Map<String, String> vi = {
   KeyLanguage.message: "Tin nhắn",
   KeyLanguage.comfirmPassword: 'Nhập lại mật khẩu',
   KeyLanguage.fullname: 'Họ và tên',
+  KeyLanguage.search: "Tìm kiếm",
   KeyLanguage.university: 'Trường học',
   KeyLanguage.age: 'Tuổi của bạn',
   KeyLanguage.birthPlace: 'Quê quán',

@@ -8,6 +8,7 @@ class BookingResponse {
   String? paymentMethod;
   UserResponse? user;
   BookedRoomResponse? bookedRoom;
+  double? price;
   String? onCreate;
   String? onUpdate;
 
@@ -16,6 +17,7 @@ class BookingResponse {
       this.bookingDate,
       this.statusOrder,
       this.paymentMethod,
+      this.price,
       this.user,
       this.bookedRoom,
       this.onCreate,
@@ -25,6 +27,7 @@ class BookingResponse {
     id = json['id'];
     bookingDate = json['bookingDate'];
     statusOrder = json['statusOrder'];
+    price = json['price'];
     paymentMethod = json['paymentMethod'];
     user = json['user'] != null ? UserResponse.fromJson(json['user']) : null;
     bookedRoom = json['bookedRoom'] != null
@@ -40,6 +43,7 @@ class BookingResponse {
     data['bookingDate'] = bookingDate;
     data['statusOrder'] = statusOrder;
     data['paymentMethod'] = paymentMethod;
+    data['price'] = price;
     if (user != null) {
       data['user'] = user!.toJson();
     }

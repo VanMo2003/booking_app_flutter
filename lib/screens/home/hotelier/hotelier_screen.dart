@@ -1,8 +1,11 @@
+import 'package:booking_app_demo/controller/room_controller.dart';
+import 'package:booking_app_demo/controller/service_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../../controller/hotel_controller.dart';
+import '../../../controller/statistical_controller.dart';
 import '../../../utils/color_constant.dart';
 import '../../widgets/loading_widget.dart';
 import 'order_screen.dart';
@@ -27,7 +30,7 @@ class _HotelierScreenState extends State<HotelierScreen> {
     RoomSceen(),
     ServiceSceen(),
     OrderScreen(),
-    RevenueSceen(),
+    RevenueScreen(),
     PersonScreen(),
   ];
 
@@ -43,12 +46,16 @@ class _HotelierScreenState extends State<HotelierScreen> {
   void initState() {
     super.initState();
     Get.find<HotelController>().getHotelMySelf();
+    Get.find<StatisticalController>().getStatisticalByHotel();
   }
 
   @override
   void dispose() {
     super.dispose();
     Get.find<HotelController>().clearData();
+    Get.find<StatisticalController>().clearData();
+    Get.find<RoomController>().clearData();
+    Get.find<ServiceController>().clearData();
   }
 
   @override

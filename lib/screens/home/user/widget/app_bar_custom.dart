@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -98,7 +96,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                       child: Row(
                         children: [
                           Text(
-                            "Tìm kiếm",
+                            KeyLanguage.search.tr,
                             style: StyleUtils.button.copyWith(
                               fontSize: DimensionUtils.FONT_SIZE_SMALL,
                             ),
